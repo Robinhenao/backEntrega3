@@ -1,12 +1,15 @@
 package com.aplicacion.apuesta.entity;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "role")
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +20,6 @@ public class Role {
 
     public Role(Long id, String nombre) {
         this.id = id;
-        this.nombre = nombre;
-    }
-
-    public Role(String nombre) {
         this.nombre = nombre;
     }
 }

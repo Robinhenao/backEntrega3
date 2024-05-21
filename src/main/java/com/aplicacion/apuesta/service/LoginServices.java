@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 
 @Service
-public class LoginServices  implements UserDetailsService {
+public class LoginServices   {
 
     @Autowired
     private ArbitroRepository arbitroRepository;
-    @Override
+
     public UserDetails loadUserByUsername(String usersName) throws UsernameNotFoundException {
 
         Arbitro user = arbitroRepository.findByCorreoElectronico(usersName);

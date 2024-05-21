@@ -34,11 +34,19 @@ public class Partido {
     @Column(nullable = false)
     private Boolean apuesta;
 
-    public Partido(Date fechaInicio, String lugar, String estado, Long arbitro, Boolean apuesta) {
+    @Column(nullable = false)
+    private Long equipo1;
+
+    @Column(nullable = false)
+    private Long equipo2;
+
+    public Partido(Date fechaInicio, String lugar, String estado, Long arbitro, Boolean apuesta, Long equipo1, Long equipo2) {
         this.fechaInicio = fechaInicio;
         this.lugar = lugar;
         this.estado = estado;
         this.arbitro = arbitro;
         this.apuesta = apuesta;
+        this.equipo1 = equipo1;
+        this.equipo2 = equipo2;
     }
 }

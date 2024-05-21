@@ -11,8 +11,8 @@ public record JugadorData(
         String apellido,
         String identificacion,
         String telefono,
-        String correoElectronico,
-        Collection<Role> role
+        String correoElectronico
+
 
 
 ) {
@@ -22,8 +22,8 @@ public record JugadorData(
                 jugador.getApellido(),
                 jugador.getIdentificacion(),
                 jugador.getTelefono(),
-                jugador.getCorreoElectronico(),
-                jugador.getRole());
+                jugador.getCorreoElectronico()
+        );
 
     }
 }

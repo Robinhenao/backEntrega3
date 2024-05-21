@@ -36,24 +36,16 @@ public class Jugador {
     @Column(nullable = false)
     private String contrasena;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(
-            name="jugador_role",
-            joinColumns = @JoinColumn(
-                    name = "id_jugador",referencedColumnName = "id_jugador"
-            ),
-            inverseJoinColumns = @JoinColumn(name = "id_role",referencedColumnName = "id")
-    )
-    private Collection<Role> role;
 
 
-    public Jugador(String nombre, String apellido, String identificacion, String telefono, String correoElectronico, String contrasena, Collection<Role> role) {
+
+    public Jugador(String nombre, String apellido, String identificacion, String telefono, String correoElectronico, String contrasena) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.identificacion = identificacion;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
         this.contrasena = contrasena;
-        this.role = role;
+
     }
 }

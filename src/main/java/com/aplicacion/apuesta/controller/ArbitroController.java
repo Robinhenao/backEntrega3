@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/arbitro")
+@RequestMapping("/api/arbitro")
+@CrossOrigin("*")
 public class ArbitroController {
 
     @Autowired

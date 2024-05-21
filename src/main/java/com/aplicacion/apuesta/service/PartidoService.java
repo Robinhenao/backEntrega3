@@ -1,10 +1,9 @@
 package com.aplicacion.apuesta.service;
 
-
-
 import com.aplicacion.apuesta.dto.PartidoData;
 import com.aplicacion.apuesta.dto.RegistroPartidoData;
 import com.aplicacion.apuesta.entity.Partido;
+import com.aplicacion.apuesta.repository.EquipoRepository;
 import com.aplicacion.apuesta.repository.PartidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,15 +16,21 @@ public class PartidoService {
     @Autowired
     PartidoRepository partidoRepository;
 
+    @Autowired
+    EquipoRepository equipoRepository;
+
+
     public PartidoData registrarPartido(RegistroPartidoData registroPartidoData) {
-        Partido partido=new Partido(
+        Partido partido = new Partido(
                 registroPartidoData.fechaInicio(),
                 registroPartidoData.lugar(),
                 registroPartidoData.estado(),
                 registroPartidoData.arbitro(),
-                registroPartidoData.apuesta()
+                registroPartidoData.apuesta(),
+                registroPartidoData.equipo1(),
+                registroPartidoData.equipo2()
         );
-        partido = this.partidoRepository.save(partido);
+        partido = partidoRepository.save(partido);
         return new PartidoData(partido);
     }
 

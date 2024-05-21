@@ -1,5 +1,7 @@
 package com.aplicacion.apuesta.dto;
 
+import com.aplicacion.apuesta.entity.Equipo;
+
 import java.util.Date;
 
 public record RegistroPartidoData(
@@ -7,6 +9,8 @@ public record RegistroPartidoData(
         String lugar,
         String estado,
         Long arbitro,
-        Boolean apuesta
+        Boolean apuesta,
+        Long equipo1,
+        Long equipo2
 ) {
 }

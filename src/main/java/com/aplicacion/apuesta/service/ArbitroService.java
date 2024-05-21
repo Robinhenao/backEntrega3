@@ -5,13 +5,14 @@ import com.aplicacion.apuesta.dto.RegistroArbitroData;
 import com.aplicacion.apuesta.entity.Arbitro;
 import com.aplicacion.apuesta.repository.ArbitroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ArbitroService {
+
     @Autowired
     ArbitroRepository arbitroRepository;
 
