@@ -6,21 +6,19 @@ import com.aplicacion.apuesta.entity.Jugador;
 import com.aplicacion.apuesta.entity.Role;
 import com.aplicacion.apuesta.repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class JugadorService  {
     @Autowired
     JugadorRepository jugadorRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     public JugadorData registrarJugador(RegistroJugadorData registroJugadorData) {
         Jugador jugador = new Jugador(
                 registroJugadorData.nombre(),
@@ -28,7 +26,8 @@ public class JugadorService  {
                 registroJugadorData.identificacion(),
                 registroJugadorData.telefono(),
                 registroJugadorData.correoElectronico(),
-                registroJugadorData.contrasena()
+                passwordEncoder.encode(registroJugadorData.contrasena()),
+                Role.USER
         );
         jugador = jugadorRepository.save(jugador);
         return new JugadorData(jugador);
@@ -42,20 +41,6 @@ public class JugadorService  {
 
     public List<JugadorData> getJugadores() {
         return jugadorRepository.findAll().stream().map(JugadorData::new).toList();
-    }
-
-
-   /* @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Jugador jugador = jugadorRepository.findBycorreoElectronico();
-        if (jugador == null) {
-            throw new UsernameNotFoundException("Usuario o password inválidos");
-        }
-        return new User(jugador.getCorreoElectronico(),jugador.getContrasena(),mapearAutoridadesRoles(jugador.getRole()));
-    }*/
-
-    private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Role> roles){
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
     }
 
 
