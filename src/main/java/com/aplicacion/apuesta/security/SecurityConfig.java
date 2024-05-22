@@ -30,6 +30,9 @@ public class SecurityConfig {
                 .authorizeRequests(authz -> authz
                         .antMatchers("/api/auth").permitAll()
                         .antMatchers("/api/jugador/**").permitAll()
+                        .antMatchers("/api/arbitro/**").permitAll()
+                        .antMatchers("/api/partido/**").permitAll()
+                        .antMatchers("/api/equipo/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sessionManager ->
