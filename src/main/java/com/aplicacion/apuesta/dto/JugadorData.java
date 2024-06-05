@@ -7,6 +7,7 @@ import java.util.Collection;
 
 
 public record JugadorData(
+        Long id,
         String nombre,
         String apellido,
         String identificacion,
@@ -18,6 +19,7 @@ public record JugadorData(
 ) {
     public JugadorData(Jugador jugador) {
         this(
+                jugador.getIdJugador(),
                 jugador.getNombre(),
                 jugador.getApellido(),
                 jugador.getIdentificacion(),

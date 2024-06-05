@@ -3,6 +3,7 @@ package com.aplicacion.apuesta.dto;
 import com.aplicacion.apuesta.entity.Arbitro;
 
 public record ArbitroData(
+        Long idArbitro,
         String nombre,
         String apellido,
         String identificacion,
@@ -11,6 +12,7 @@ public record ArbitroData(
 ) {
     public ArbitroData(Arbitro arbitro) {
         this(
+                arbitro.getIdArbitro(),
                 arbitro.getNombre(),
                 arbitro.getApellido(),
                 arbitro.getIdentificacion(),
